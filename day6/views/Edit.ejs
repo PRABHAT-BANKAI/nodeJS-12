@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Update Form</h1>
+   <table border="">
+      <form action="/updaterecord" method="post">
+        <input  name="id" type="hidden" value="<%= id  %>">
+        <tr>
+          <td>Name</td>
+          <td><input name="userName" type="text" value="<%= getData.userName  %>" /></td>
+        </tr>
+        <tr>
+          <td>Age</td>
+          <td><input name="age" type="text" value="<%= getData.age  %>" /></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><button>Update</button></td>
+        </tr>
+      </form>
+    </table>
+</body>
+</html>
