@@ -1,0 +1,40 @@
+const express = require("express");
+const connection = require("./config/db");
+const UserModel = require("./models/UserModel");
+const port = 8081;
+const app = express();
+
+app.set("view engine", "ejs");
+app.use(express.urlencoded({ extended: true }));
+app.get("/", async (req, res) => {
+  try {
+    let userData = await UserModel.find({});
+    // console.log(userData)
+    res.render("home",{userData});
+  } catch (error) {
+    console.log(error);
+    res.redirect("/");
+  }
+});
+
+app.post("/addData", async (req, res) => {
+  // console.log(req.body);
+
+  try {
+    await UserModel.create(req.body);
+    console.log("user Data added successfully");
+    res.redirect("/");
+  } catch (error) {
+    console.log(error);
+    res.redirect("/");
+  }
+});
+
+app.listen(port, (error) => {
+  if (error) {
+    console.log("server is not connected ");
+    return;
+  }
+  connection();
+  console.log("server is running ", port);
+});
