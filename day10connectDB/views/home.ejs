@@ -14,6 +14,29 @@
           <td><input type="text" name="userName" /></td>
         </tr>
         <tr>
+          <td>Email</td>
+          <td><input type="email" name="email" /></td>
+        </tr>
+        <tr>
+          <td>Password</td>
+          <td><input type="password" name="password" /></td>
+        </tr>
+        <tr>
+          <td>Gender</td>
+          <td>
+            <input type="radio" name="gender" value="male" /> Male
+            <input type="radio" name="gender" value="female" /> Female
+          </td>
+        </tr>
+        <tr>
+          <td>Hobby</td>
+          <td>
+            <input type="checkbox" name="hobby" value="coding" /> coding
+            <input type="checkbox" name="hobby" value="cycling" /> cycling
+            <input type="checkbox" name="hobby" value="cricket" /> cricket
+          </td>
+        </tr>
+        <tr>
           <td></td>
           <td><button>Submit</button></td>
         </tr>
@@ -25,16 +48,27 @@
       <thead>
         <tr>
           <th>User Name</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Gender</th>
+          <th>Hobby</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
-        <% userData.forEach((item)=>{ %> 
-          <tr>
-            <td><%= item.userName %></td>
-          </tr>
-          
-          
-          <% }) %>
+        <% userData.forEach((item)=>{ %>
+        <tr>
+          <td><%= item.userName %></td>
+          <td><%= item.email %></td>
+          <td><%= item.password %></td>
+          <td><%= item.gender %></td>
+           <td><%= item.hobby %></td>
+          <td>
+            <a href="/deleteData/<%= item.id %>"><button>Delete</button></a>
+          </td>
+        </tr>
+
+        <% }) %>
       </tbody>
     </table>
   </body>

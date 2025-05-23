@@ -10,7 +10,7 @@ app.get("/", async (req, res) => {
   try {
     let userData = await UserModel.find({});
     // console.log(userData)
-    res.render("home",{userData});
+    res.render("home", { userData });
   } catch (error) {
     console.log(error);
     res.redirect("/");
@@ -23,6 +23,19 @@ app.post("/addData", async (req, res) => {
   try {
     await UserModel.create(req.body);
     console.log("user Data added successfully");
+    res.redirect("/");
+  } catch (error) {
+    console.log(error);
+    res.redirect("/");
+  }
+});
+
+app.get("/deleteData/:id", async (req, res) => {
+  const id = req.params.id;// _id private// 
+
+  try {
+    await UserModel.findByIdAndDelete(id);
+    console.log("user is deleted successfully");
     res.redirect("/");
   } catch (error) {
     console.log(error);

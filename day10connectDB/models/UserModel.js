@@ -13,6 +13,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  gender: {
+    type: String,
+    require: true,
+  },
+  hobby: {
+    type: Array,
+    require: true,
+  },
 });
 
 const UserModel = mongoose.model("userData", userSchema);
