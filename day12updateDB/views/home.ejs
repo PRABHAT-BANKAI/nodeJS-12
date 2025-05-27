@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>home page</h1>
+    <table border="">
+      <form action="/addData" method="post"  enctype="multipart/form-data">
+        <tr>
+          <td>User Name</td>
+          <td><input type="text" name="userName" /></td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td><input type="email" name="email" /></td>
+        </tr>
+        <tr>
+          <td>Password</td>
+          <td><input type="password" name="password" /></td>
+        </tr>
+        <tr>
+          <td>Gender</td>
+          <td>
+            <input type="radio" name="gender" value="male" /> Male
+            <input type="radio" name="gender" value="female" /> Female
+          </td>
+        </tr>
+        <tr>
+          <td>Hobby</td>
+          <td>
+            <input type="checkbox" name="hobby" value="coding" /> coding
+            <input type="checkbox" name="hobby" value="cycling" /> cycling
+            <input type="checkbox" name="hobby" value="cricket" /> cricket
+          </td>
+        </tr>
+          <tr>
+          <td>Image</td>
+          <td><input type="file" name="image" /></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><button>Submit</button></td>
+        </tr>
+      </form>
+    </table>
+    <br />
+    <br />
+    <table border="">
+      <thead>
+        <tr>
+          <th>User Name</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Gender</th>
+          <th>Hobby</th>
+             <th>Image</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% userData.forEach((item)=>{ %>
+        <tr>
+          <td><%= item.userName %></td>
+          <td><%= item.email %></td>
+          <td><%= item.password %></td>
+          <td><%= item.gender %></td>
+           <td><%= item.hobby %></td>
+            <td><img height="200px" src="<%= item.image %>" alt=""></td>
+          <td>
+            <a href="/deleteData/<%= item.id %>"><button>Delete</button></a>
+            <a href="/editData/<%= item.id %>"><button>Edit</button></a>
+          </td>
+        </tr>
+
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>

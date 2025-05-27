@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Update data</h1>
+      <table border="">
+      <form action="/updateData" method="post">
+        <tr>
+          <td>User Name</td>
+          <input type="hidden"  name="id" value="<%= userData.id %>" >
+          <td><input type="text" name="userName"  value="<%= userData.userName %>" /></td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td><input type="email" name="email"  value="<%= userData.email %>" /></td>
+        </tr>
+        <tr>
+          <td>Password</td>
+          <td><input type="password" name="password" value="<%= userData.password %>" /></td>
+        </tr>
+        <tr>
+          <td>Gender</td>
+          <td>
+            <input type="radio" name="gender" value="male"  <%= userData.gender == "male" ?"checked":""  %>  /> Male
+            <input type="radio" name="gender" value="female"  <%= userData.gender == "female" ?"checked":""  %> /> Female
+          </td>
+        </tr>
+        <tr>
+          <td>Hobby</td>
+          <td>
+            <input type="checkbox" name="hobby" value="coding"    <%= userData.hobby.includes("coding") ? "checked":""  %>/> coding
+            <input type="checkbox" name="hobby" value="cycling"  <%= userData.hobby.includes("cycling") ?  "checked":""  %> /> cycling
+            <input type="checkbox" name="hobby" value="cricket"  <%= userData.hobby.includes("cricket") ? "checked":""   %> /> cricket
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><button>Submit</button></td>
+        </tr>
+      </form>
+    </table>
+  
+</body>
+</html>
