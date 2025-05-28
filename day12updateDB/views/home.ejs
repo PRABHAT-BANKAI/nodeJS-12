@@ -56,7 +56,7 @@
           <th>Password</th>
           <th>Gender</th>
           <th>Hobby</th>
-             <th>Image</th>
+          <th>Image</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -68,9 +68,9 @@
           <td><%= item.password %></td>
           <td><%= item.gender %></td>
            <td><%= item.hobby %></td>
-            <td><img height="200px" src="<%= item.image %>" alt=""></td>
+            <td><img height="100px" src="<%= item.image %>" alt=""></td>
           <td>
-            <a href="/deleteData/<%= item.id %>"><button>Delete</button></a>
+            <a href="/deleteData/?dataId=<%= item.id %>"><button>Delete</button></a>
             <a href="/editData/<%= item.id %>"><button>Edit</button></a>
           </td>
         </tr>
