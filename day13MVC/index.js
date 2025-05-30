@@ -4,7 +4,9 @@ const userRouter = require("./routes/userRoute");
 const port = 8080;
 const app = express();
 
-app.use("/users", userRouter);
+app.set("view engine", "ejs");
+app.use(express.urlencoded({ extended: true }));
+app.use("/", userRouter);
 
 app.listen(port, (error) => {
   if (error) {

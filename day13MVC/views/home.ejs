@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Resigration Form</h1>
+    <table>
+      <form action="/add" method="post">
+        <tr>
+          <td>Name</td>
+          <td><input type="text" name="userName" /></td>
+        </tr>
+        <tr>
+          <td>EMail</td>
+          <td><input type="email" name="email" /></td>
+        </tr>
+        <tr>
+          <td>password</td>
+          <td><input type="password" name="password" /></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><button>Submit</button></td>
+        </tr>
+      </form>
+    </table>
+
+    <br /><br />
+    <table border="">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>password</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% userData.forEach((item)=>{ %>
+        <tr>
+          <td><%= item.userName %></td>
+          <td><%= item.email %></td>
+          <td><%= item.password %></td>
+        </tr>
+
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>
