@@ -2,14 +2,13 @@ const express = require("express");
 const port = 8080;
 const app = express();
 const path = require("path");
+const productRouter = require("./routes/productsRoutes");
 
 app.set("view engine", "ejs");
 // app.use("/admin",)
 app.use("/assets", express.static(path.join(__dirname, "/assets")));
 
-app.get("/", (req, res) => {
-  res.render("dashboard");
-});
+app.use("/", productRouter);
 
 app.listen(port, (error) => {
   if (error) {
