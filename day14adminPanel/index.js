@@ -5,11 +5,14 @@ const path = require("path");
 const productRouter = require("./routes/productsRoutes");
 const connection = require("./config/db");
 const userRouter = require("./routes/userRoutes");
+const cookieParser = require("cookie-parser") 
 
 app.set("view engine", "ejs");
 // app.use("/admin",)
 app.use("/assets", express.static(path.join(__dirname, "/assets")));
 app.use(express.urlencoded({ extended: true }));
+
+app.use(cookieParser())
 
 app.use("/userdata", userRouter);
 app.use("/alldata", productRouter);

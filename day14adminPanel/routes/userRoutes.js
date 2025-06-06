@@ -1,10 +1,17 @@
 const express = require("express");
 const UserModel = require("../models/userModels");
+const cookies = require("cookies");
 
 const userRouter = express.Router();
 
 userRouter.get("/", (req, res) => {
-  res.render("signIn");
+  const allData = req.cookies.auth;
+  console.log(allData);
+  if (!allData) {
+    return res.render("signIn");
+  }
+
+  return res.redirect("/alldata/dashboard");
 });
 
 userRouter.get("/signup", (req, res) => {
@@ -23,14 +30,15 @@ userRouter.post("/signup-user", async (req, res) => {
 
 userRouter.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  console.log(req.body)
+  console.log(req.body);
 
   try {
     let userData = await UserModel.findOne({ email });
     if (userData.password == password) {
+      res.cookie("auth", userData);
       res.redirect("/alldata/dashboard");
     } else {
-      console.log("invalid password")
+      console.log("invalid password");
       res.redirect("/userdata/");
     }
   } catch (error) {
