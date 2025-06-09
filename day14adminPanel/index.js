@@ -14,8 +14,19 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser())
 
+//httplocalhost:8080/userdata => login 
+//httplocalhost:8080/userdata/signup => signup page 
+
 app.use("/userdata", userRouter);
+
+//httplocalhost:8080/userdata/dashbaord => dashbaord
+
+
 app.use("/alldata", productRouter);
+
+
+
+// .listen use for server run 
 
 app.listen(port, (error) => {
   if (error) {

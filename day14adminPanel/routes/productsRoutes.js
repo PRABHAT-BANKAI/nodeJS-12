@@ -16,4 +16,10 @@ productRouter.get("/addProducts", (req, res) => {
   res.render("addProducts");
 });
 
+productRouter.get("/viewProducts", (req, res) => {
+  res.render("viewProducts");
+});
+
+
+
 module.exports = productRouter;
