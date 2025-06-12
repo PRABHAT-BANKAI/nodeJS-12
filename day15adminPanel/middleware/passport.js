@@ -1,9 +1,9 @@
-const passport = require("passport");
+const passportLocal = require("passport");
 const UserModel = require("../models/userModels");
 
 const PassportStrategy = require("passport-local").Strategy;
 
-passport.use(
+passportLocal.use(
   new PassportStrategy(
     { usernameField: "email" },
     async (email, password, done) => {
@@ -20,7 +20,7 @@ passport.use(
   )
 );
 
-passport.serializeUser(async (user, done) => {
+passportLocal.serializeUser(async (user, done) => {
   const userData = await UserModel.findById(user.id);
   if (!userData) {
     return done(null, false);
@@ -29,7 +29,7 @@ passport.serializeUser(async (user, done) => {
   return done(null, userData.id);
 });
 
-passport.deserializeUser(async (id, done) => {
+passportLocal.deserializeUser(async (id, done) => {
   const userData = await UserModel.findById(id);
   if (!userData) {
     return done(null, false);
@@ -38,4 +38,4 @@ passport.deserializeUser(async (id, done) => {
   return done(null, userData);
 });
 
-module.exports = passport;
+module.exports = passportLocal;
