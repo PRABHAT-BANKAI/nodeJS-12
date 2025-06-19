@@ -1,8 +1,9 @@
 const express = require("express");
+const passportLocal = require("../middleware/passport");
 
 const productRouter = express.Router();
 
-productRouter.get("/dashboard", (req, res) => {
+productRouter.get("/dashboard", passportLocal.checkAuth, (req, res) => {
   return res.render("dashboard");
 });
 

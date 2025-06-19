@@ -15,6 +15,8 @@ passportLocal.use(
 
       if (userData.password == password) {
         return done(null, userData);
+      } else {
+        return done(null, false);
       }
     }
   )
@@ -37,5 +39,15 @@ passportLocal.deserializeUser(async (id, done) => {
 
   return done(null, userData);
 });
+
+passportLocal.checkAuth = (req, res, next) => {
+  console.log(req.isAuthenticated(), "checkauth");
+  if (req.isAuthenticated()) {
+    //req.isAuthenticated() will return true if user is logged in
+    next();
+  } else {
+    res.redirect("/userdata");
+  }
+};
 
 module.exports = passportLocal;

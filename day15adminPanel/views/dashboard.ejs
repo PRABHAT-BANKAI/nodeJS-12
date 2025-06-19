@@ -688,3 +688,20 @@
             <!-- ============================================================== -->
             <!-- ============================================================== -->
            <%- include("footer") %>
+
+
+ <script>
+          <% if(locals.flash.success){ %>
+            Swal.fire({
+            title: "<%= locals.flash.success %>",
+            text: "You clicked the button!",
+            icon: "success"
+          });
+          
+          <% } %>
+          
+          
+          
+          
+                   </script>
+

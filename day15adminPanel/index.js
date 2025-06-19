@@ -8,13 +8,17 @@ const connection = require("./config/db");
 const userRouter = require("./routes/userRoutes");
 const cookieParser = require("cookie-parser");
 const passport = require("passport");
+const flash = require("connect-flash");
+const connectFlash = require("./middleware/flash");
 
 app.set("view engine", "ejs");
 // app.use("/admin",)
 app.use("/assets", express.static(path.join(__dirname, "/assets")));
 app.use(express.urlencoded({ extended: true }));
 
-// app.use(cookieParser())
+app.use(flash());
+
+app.use(cookieParser())
 
 app.use(
   session({
@@ -30,6 +34,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(connectFlash.setFlash);
 //httplocalhost:8080/userdata => login
 //httplocalhost:8080/userdata/signup => signup page
 
