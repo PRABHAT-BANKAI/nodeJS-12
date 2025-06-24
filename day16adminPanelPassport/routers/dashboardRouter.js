@@ -171,6 +171,7 @@ dashboardRouter.get("/addSubProducts", async (req, res) => {
 
 
 dashboardRouter.get("/subProductTable", passport.auth, async (req, res) => {
+  
   try {
     const getSubProducts = await SubProductModel.find().populate("productId").exec();
     console.log(getSubProducts);
