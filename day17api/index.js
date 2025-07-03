@@ -1,19 +1,19 @@
 const express = require("express");
 const connection = require("./config/db");
 const userRouter = require("./routes/UserRoute");
+const auth = require("./middleware/auth");
 const port = 8080;
 
 const app = express();
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.status(200).json({
-    message: "hello from server",
-  });
-});
-
 app.use("/api/user", userRouter);
+app.use(auth);
+
+app.get("/api/products", (req, res) => {
+  res.json({ message: "product data" });
+});
 
 app.listen(port, (err) => {
   if (err) {
