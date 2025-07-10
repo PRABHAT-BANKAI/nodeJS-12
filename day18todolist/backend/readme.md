@@ -7,5 +7,6 @@ step 6: create script for nodemon in package.json
 step 7:create folder( config,middleware,models,routes ) structure of MVC 
 step 8: connect database with mongodbAtlas(cloud )
 step 9: create models for user
-step 10 : create route for user
+step 10: create route for user
 step 11: create UserRouter.post for adding user
+step 12:install bcrypt  for encrypted password
