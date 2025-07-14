@@ -16,12 +16,20 @@ todolistRouter.post("/", async (req, res) => {
   }
 });
 
-todolistRouter.get("/", (req, res) => {
+todolistRouter.get("/", async (req, res) => {
+  let authorId = req.user._id;
+
   try {
-    console.log(req.user);
-    return res.send("get todo");
+    let getAllData = await TodolistModel.find({authorId})
+
+    return res.status(200).json({
+      message: "success",
+      todolist: getAllData,
+    });
   } catch (error) {
-    return res.status(404);
+    return res.status(404).json({
+      error: error,
+    });
   }
 });
 
