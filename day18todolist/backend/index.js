@@ -4,8 +4,9 @@ const UserRouter = require("./routes/userRoute");
 const todolistRouter = require("./routes/todoRoute");
 const authenticate = require("./middleware/auth");
 const app = express();
+const cors = require("cors")
 require("dotenv").config();
-
+app.use(cors())
 app.use(express.json());
 // app.get("/", (req, res) => {
 //   res.status(200).json({
