@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useAuth } from "../context/Authcontext";
 
 const SignIn = () => {
+  const { login } = useAuth();
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -17,6 +19,8 @@ const SignIn = () => {
       );
       console.log(response);
       alert(response.data.message);
+
+      login(response.data.token);
     } catch (error) {
       console.log(error);
     }
