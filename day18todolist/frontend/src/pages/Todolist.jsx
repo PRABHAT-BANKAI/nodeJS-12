@@ -3,8 +3,31 @@ import axios from "axios";
 import { useAuth } from "../context/Authcontext";
 
 const Todolist = () => {
-  const { token } = useAuth();
+  const { token, logout } = useAuth();
   const [todoData, setData] = useState([]);
+  const [task, setTask] = useState("");
+  async function handleAdd() {
+    try {
+      let response = await axios.post(
+        "http://localhost:8080/api/todo",
+        { task: task },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      alert(response.data.message);
+    } catch (error) {
+      console.log(error);
+    }
+    setTask("");
+  }
+  function handleLogout() {
+    alert("logout successfully")
+    logout();
+  }
 
   useEffect(() => {
     axios
@@ -18,11 +41,19 @@ const Todolist = () => {
         setData(res.data.todolist);
       })
       .catch((err) => console.log(err));
-  }, [token]);
+  }, [token, todoData]);
 
   return (
     <div>
+      <button onClick={handleLogout}>logout</button>
       <h1>Todolist</h1>
+      <input
+        type="text"
+        placeholder="Enter your task"
+        value={task}
+        onChange={(e) => setTask(e.target.value)}
+      />
+      <button onClick={handleAdd}>add task</button>
 
       <div>
         {todoData.map((item) => {

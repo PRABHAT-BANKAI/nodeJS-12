@@ -4,6 +4,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 const AuthContext = createContext();// globally data create krne k liyae
 
 export const AuthProvider = ({ children }) => {
+
   const [token, setToken] = useState(localStorage.getItem("token") || "");
 
   const login = (token) => {// token parameter
@@ -17,6 +18,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const isAuthenticated = !!token;
+
 
   return (
     <AuthContext.Provider value={{ token, login, logout, isAuthenticated }}>
